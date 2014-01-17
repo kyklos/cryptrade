@@ -20,7 +20,7 @@ shadww: 149UTnSMy8nUc4qhsBsAiUXPE26XFQEhB8
 __________________________________________________
 ## Install
 
-    git clone https://github.com/shadww/cryptrade.git
+    git clone https://github.com/D-Nice/cryptrade.git
     cd cryptrade
     npm install (or sudo npm install if you are having trouble with npm update later on)
 
