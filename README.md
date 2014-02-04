@@ -70,8 +70,11 @@ End where functions are called:
     if diff > context.buy_treshold and Functions.can_buy(instrument, .01, .2)         
         buy instrument # Spend all amount of cash for BTC
     else
-        if diff < -context.sell_treshold and Functions.can_buy(instrument, .01, .2) 
+        if diff < -context.sell_treshold and Functions.can_sell(instrument, .01) 
             sell instrument # Sell BTC position
       
+Q: How do I change the dates for the backtest?
+
+A: Change the 'init_data_length' in config.cson to the desired length or change the value of -s when you run the backtest.
 
 Original Readme can be found here: https://github.com/pulsecat/cryptrade
