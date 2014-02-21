@@ -2,7 +2,7 @@ Current version development by pulsecat, javdejong, shadww, D-Nice
 
 Rudimentary backtesting by javdejong
 
-Limit orders by shadww (sell order tested on live market)
+Limit orders by shadww (BUGGY - need more info for potential fix)
 
 Simpler and streamlined backtesting by D-Nice 
 
