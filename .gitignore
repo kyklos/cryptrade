@@ -2,3 +2,6 @@
 *.log
 logs/*
 *~
+keys.cson
+node_modules/*
+strategy/development/*
