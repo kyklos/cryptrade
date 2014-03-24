@@ -1,4 +1,4 @@
-require "underscore"
+_ = require 'underscore'
 fs = require "fs"
 CoffeeScript = require 'coffee-script'
 CSON = require 'cson'
