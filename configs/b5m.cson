@@ -1,0 +1,7 @@
+{
+    platform: "bitstamp"
+    instrument: "btc_usd"
+    fee: 0.5
+    min_order: 1 # in USD
+    period: "5m"
+}
