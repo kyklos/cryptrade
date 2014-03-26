@@ -101,6 +101,9 @@ if require.main == module
     length_end = config.init_data_length + add_length - 1
 
     Fiber =>
+       start_date = new Date(bars[add_length].at)
+       logger.info 'Backtest simulation started ' + start_date
+       
        # Initialize the trader with the initial data
        trader.init(bars[0...add_length])
 
@@ -113,7 +116,8 @@ if require.main == module
          if i is length_end-1
             start_date = new Date(bars[add_length].at)
             end_date = new Date(bars[length_end].at)
-            setTimeout (-> logger.info '\nSimulation started ' + start_date + '\nSimulation ended ' + end_date), 2000 
+            setTimeout (-> logger.info 'Backtest simulation started ' + start_date + ' and ended ' + end_date), 1500
+            setTimeout (-> process.exit(code=0)), 2500
        trader.finalize bars
      .run()
      
