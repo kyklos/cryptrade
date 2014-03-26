@@ -6,6 +6,13 @@ inspect = require('./utils').inspect
 printDate = require('./utils').printDate
 Instrument = require './instrument'
 talib = require './talib_sync'
+nodemailer = require 'nodemailer'
+
+smtpTransport = nodemailer.createTransport "SMTP",
+    service: "Gmail"
+    auth:
+        user: ""
+        pass: ""
 
 class Trader
   constructor: (@name,@config,@account,@script)->
@@ -45,8 +52,22 @@ class Trader
       plot: (series)->
         # do nothing
       sendEmail: (text)->
-        logger.verbose 'Sending e-mail '+text
-        # @TODO add send email functionality
+        logger.verbose 'Sending e-mail ' + text
+        
+        mail = 
+        from: "" 
+        to: ""
+        subject:""
+        text: text
+        smtpTransport.sendMail mail, (error, response) ->
+          if error
+            logger.verbose error
+          else
+            logger.verbose "Message sent: " + response.message
+        smtpTransport.close
+
+
+
     @script = vm.runInNewContext @script, @sandbox, @name
     _.extend @sandbox,@script
     platformCls = require('./platforms/'+config.platform)
