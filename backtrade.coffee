@@ -114,4 +114,6 @@ if require.main == module
             start_date = new Date(bars[add_length].at)
             end_date = new Date(bars[length_end].at)
             setTimeout (-> logger.info '\nSimulation started ' + start_date + '\nSimulation ended ' + end_date), 2000 
+       trader.finalize bars
      .run()
+     

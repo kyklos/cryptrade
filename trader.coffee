@@ -190,4 +190,8 @@ class Trader
             @sandbox.handle @context, @data
           .run()
     
+  finalize: (bars)->
+    if @sandbox.finalize 
+          @sandbox.finalize @context
+
 module.exports = Trader
