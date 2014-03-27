@@ -69,6 +69,7 @@ if require.main == module
     process.exit 1
 
   # Load trade data
+  logger.add logger.transports.File,{filename: "logs/backtest_#{name}.log",level:'info'}
   logger.info 'Connecting to data provider..'
   client = io.connect config.data_provider, config.socket_io
   trader = undefined

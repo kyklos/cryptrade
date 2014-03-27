@@ -4,4 +4,4 @@ logs/*
 *~
 keys.cson
 node_modules/*
-strategy/development/*
+strategies/*
