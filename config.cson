@@ -1,9 +1,6 @@
 data_provider: "http://data.cryptotrader.org"
-platform: "mtgox"
-instrument: "btc_usd"
-period: "1h"
-init_data_length:250
-check_order_interval: 30
+
+platform: "bitstamp"
 
 socket_io:
   transports: [
@@ -13,30 +10,26 @@ socket_io:
   ]
 
 platforms:
-  mtgox:
-    min_order: 
-      btc: 0.01
-    max_retries: 10
-    retry_interval: 15
   bitstamp:
     min_order:
       btc: 0.01
-    max_retries: 10
-    retry_interval: 15
+    max_retries: 24
+    retry_interval: 10
+    check_order_interval: 120
+    fee: 0.5
   btce:
     min_order:
       btc: 0.01
-      ltc: 0.1 
+      ltc: 0.1
     max_retries: 10
     retry_interval: 15
   cexio:
-    min_order: 
-      ghs: 0.01 
+    min_order:
+      ghs: 0.01
     max_retries: 10
     retry_interval: 15
   backtest:
     initial_portfolio:
       usd: 1000
       btc: 0
-    fee: 0.2
-
+    fee: 0.5

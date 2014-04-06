@@ -2,6 +2,8 @@
 *.log
 logs/*
 *~
+CHANGELOG
 keys.cson
 node_modules/*
 strategies/*
+datas/*
