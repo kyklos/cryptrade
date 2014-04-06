@@ -10,6 +10,7 @@ class Instrument
     @volumes = []
     @bars = []
     @pair = @id.split('_')
+    @ticks = []
 
   asset: ->
     @pair[0]
@@ -33,6 +34,7 @@ class Instrument
     @price = data.close
     @volume = data.volume
     @bars.push data
+    @ticks.push at: data.at
 
   vwap: (period)->
     if period < @bars.length
