@@ -85,6 +85,9 @@ if require.main == module
   client.on 'data_error', (err)->
     logger.error err
   client.on 'data_init',(bars)->
+    # Backup backtest datas to json file
+    # fs.writeFile "backtest.json", JSON.stringify(bars), (error) ->
+    #     console.error("Error writing file", error) if error
     logger.verbose "Received historical market data #{bars.length} bar(s)"
 
     # Configuration of other options
