@@ -11,6 +11,7 @@ class Instrument
     @bars = []
     @pair = @id.split('_')
     @ticks = []
+    @ticker = {}
 
   asset: ->
     @pair[0]
@@ -38,6 +39,9 @@ class Instrument
       @ticks.shift()
     @ticks.push at: data.at, open :data.open, low: data.low, high: data.high, close: data.close, volume: data.volume
 
+  tickers: (data) ->
+    @ticker = sell: data.sell, buy: data.buy
+    
   vwap: (period)->
     if period < @bars.length
       idx = @bars.length - period

@@ -91,6 +91,8 @@ class Trader
       else
         logger.verbose "updateTicker: #{inspect(ticker)}"
         @ticker = ticker
+        instrument = @data[@config.instrument]
+        instrument.tickers @ticker
         cb()
 
   updatePortfolio: (positions,platform,cb)->
