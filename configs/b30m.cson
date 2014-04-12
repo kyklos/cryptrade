@@ -4,4 +4,8 @@
     fee: 0.5
     min_order: 1 # in USD
     period: "30m"
+    max_retries: 10
+    retry_interval: 15
+    check_order_interval: 300
+    init_data_length: 1000
 }

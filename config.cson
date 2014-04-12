@@ -1,7 +1,5 @@
 data_provider: "http://data.cryptotrader.org"
 
-platform: "bitstamp"
-
 socket_io:
   transports: [
     "websocket"
@@ -13,9 +11,9 @@ platforms:
   bitstamp:
     min_order:
       btc: 0.01
-    max_retries: 24
-    retry_interval: 10
-    check_order_interval: 120
+    max_retries: 10
+    retry_interval: 15
+    check_order_interval: 30
     fee: 0.5
   btce:
     min_order:
@@ -23,11 +21,15 @@ platforms:
       ltc: 0.1
     max_retries: 10
     retry_interval: 15
+    check_order_interval: 30
+    fee: 0.2
   cexio:
     min_order:
       ghs: 0.01
     max_retries: 10
     retry_interval: 15
+    check_order_interval: 30
+    fee: 0.2
   backtest:
     initial_portfolio:
       usd: 1000
