@@ -12,6 +12,7 @@ class Instrument
     @pair = @id.split('_')
     @ticks = []
     @ticker = {}
+    @fee = @platform.config.fee
 
   asset: ->
     @pair[0]
