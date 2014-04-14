@@ -1,0 +1,10 @@
+{
+    platform: "btce"
+    instrument: "ltc_usd"
+    fee: 0.2
+    min_order: 1 # in USD
+    period: "15m"
+    max_retries: 10
+    retry_interval: 15
+    check_order_interval: 300
+}

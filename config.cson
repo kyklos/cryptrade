@@ -13,7 +13,7 @@ platforms:
       btc: 0.01
     max_retries: 10
     retry_interval: 15
-    check_order_interval: 30
+    check_order_interval: 300
     fee: 0.5
   btce:
     min_order:
@@ -21,14 +21,14 @@ platforms:
       ltc: 0.1
     max_retries: 10
     retry_interval: 15
-    check_order_interval: 30
+    check_order_interval: 300
     fee: 0.2
   cexio:
     min_order:
       ghs: 0.01
     max_retries: 10
     retry_interval: 15
-    check_order_interval: 30
+    check_order_interval: 300
     fee: 0.2
   backtest:
     initial_portfolio:
