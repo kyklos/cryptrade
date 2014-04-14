@@ -117,11 +117,9 @@ if require.main == module
          bar = bars[i]
          trader.handle bar
          #TODO Add profit/loss calculation, and gains/losses quantitatively
-         if i is length_end-1
-            start_date = new Date(bars[add_length].at)
-            end_date = new Date(bars[length_end].at)
-            setTimeout (-> logger.info 'Backtest simulation started ' + start_date + ' and ended ' + end_date), 1500
-            setTimeout (-> process.exit(code=0)), 2500
        trader.finalize bars
+
+       setTimeout (-> logger.info 'Backtest simulation started ' + new Date(bars[add_length].at) + ' and ended ' + new Date(bars[length_end].at)), 100
+       setTimeout (-> process.exit(code=0)), 200
      .run()
      
