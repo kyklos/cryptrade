@@ -36,7 +36,7 @@
     "iced-coffee-script": "~1.6.3-g",
     "coffee-script": "~1.6.3",
     "bitstamp": "git+https://github.com/pulsecat/bitstamp.git#v0.0.13",
-    "btc-e": "0.0.11",
+    "btc-e": "git+https://github.com/pulsecat/node-btc-e.git#v0.0.12",
     "cexio": "0.0.1",
     "nodemailer": "~0.6.1"
   }
