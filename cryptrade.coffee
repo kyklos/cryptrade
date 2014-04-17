@@ -96,6 +96,9 @@ if require.main == module
     if trader?
       for bar in bars
         trader.handle bar
+        trader.serialize bar
+        fs.writeFileSync "#{name}.json", JSON.stringify(trader.serialize()), encoding: 'utf8', (error) ->
+          console.error("Error writing JSON file", error) if error
   client.on 'error', (err)->
     logger.error err
   client.on 'disconnect', ->

@@ -1,4 +1,5 @@
 _ = require 'underscore'
+fs = require 'fs'
 logger = require 'winston'
 vm = require 'vm'
 Fiber = require 'fibers'
@@ -82,7 +83,14 @@ class Trader
     @data[config.instrument] = instrument
     @data.instruments = [instrument]
     @context = {}
+    @serialized_context = {}
     @sandbox.init @context
+    # Restore serialize JSON and merge context objects
+    if fs.existsSync "#{@name}.json"
+      @serialized_context = fs.readFileSync "#{@name}.json", encoding: 'utf8'           
+      # Avoid "wrong" generated JSON files - Should be fixed
+      if @serialized_context is not 'undefined'
+        _.extend(@context, JSON.parse(@serialized_context))
 
   updateTicker: (platform,cb)->
     platform.getTicker (err,ticker)=>
@@ -191,6 +199,15 @@ class Trader
     @updatePortfolio instrument.pair,instrument.platform, =>
       balance = @calcPositions instrument.pair
       logger.info "Trader initialized successfully. Starting balance: #{balance}"
+  
+  serialize: (bar)->
+    if @sandbox.serialize 
+      if @config.platform == "backtest"
+        @sandbox.serialize @context
+      else
+        Fiber =>
+         @sandbox.serialize @context
+        .run()
 
   handle: (bar)->
     instrument = @data[bar.instrument]

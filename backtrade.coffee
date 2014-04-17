@@ -116,10 +116,16 @@ if require.main == module
        for i in [add_length...length_end]
          bar = bars[i]
          trader.handle bar
-         #TODO Add profit/loss calculation, and gains/losses quantitatively
+         trader.serialize bar
+         fs.writeFileSync "#{name}.json", JSON.stringify(trader.serialize()), encoding: 'utf8', (error) ->
+            console.error("Error writing JSON file", error) if error
+       
        trader.finalize bars
 
+       #TODO Add profit/loss calculation, and gains/losses quantitatively
        setTimeout (-> logger.info 'Backtest simulation started ' + new Date(bars[add_length].at) + ' and ended ' + new Date(bars[length_end].at)), 100
-       setTimeout (-> process.exit(code=0)), 200
+       # removing serialize JSON object after backtest
+       setTimeout (-> fs.unlink "#{name}.json"), 200
+       setTimeout (-> process.exit(code=0)), 300
      .run()
      
