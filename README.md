@@ -1,5 +1,5 @@
-
-Please refer to [Wiki](https://github.com/kyklos/cryptrade/wiki), original Readme can be found here: https://github.com/pulsecat/cryptrade  
+Original Sources and Readme can be found here: https://github.com/pulsecat/cryptrade  
+For FAQ or more information refer to [Wiki](https://github.com/kyklos/cryptrade/wiki)  
 
 ## Installing
 
