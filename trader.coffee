@@ -172,23 +172,26 @@ class Trader
             logger.info "#{dateprefix}SELL order ##{orderId} amount: #{amount} #{order.asset.toUpperCase()} @ #{order.price}"
             break
         # TODO: timeouts for backtesting. Currently the check_order_interval is set to 0
-        setTimeout =>
-          platform.isOrderActive orderId,(err,active)=>
-            if err?
-              logger.error err
-            if active
-              logger.info "Canceling order ##{orderId} as it was inactive for #{order.timeout} seconds."
-              platform.cancelOrder orderId, (err)=>
-                if err?
-                  logger.error err
-                else
-                  logger.info "Creating new order.."
-                  @updateTicker platform,=>
-                    @updatePortfolio [order.asset,order.curr], order.platform,=>
-                      @trade order, cb
-            else
-              orderCb()
-        ,order.timeout*1000
+        if @config.platform == "backtest"
+          orderCb() # Do not user setTimeout to keep execution order.
+        else
+          setTimeout =>
+            platform.isOrderActive orderId,(err,active)=>
+              if err?
+                logger.error err
+              if active
+                logger.info "Canceling order ##{orderId} as it was inactive for #{order.timeout} seconds."
+                platform.cancelOrder orderId, (err)=>
+                  if err?
+                    logger.error err
+                  else
+                    logger.info "Creating new order.."
+                    @updateTicker platform,=>
+                      @updatePortfolio [order.asset,order.curr], order.platform,=>
+                        @trade order, cb
+              else
+                orderCb()
+          ,order.timeout*1000
       else
         orderCb()
 
