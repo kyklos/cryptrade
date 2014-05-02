@@ -38,7 +38,7 @@ if require.main == module
      for x,i in config.instrument.split('_')
         pl.initial_balance[x] = program.balance[i]
   #This variable ensures an accurate backtest, by including a set amount of periods in the intial backtest. Should be at least equal to the period your longest indicator uses. Eg. EMA(200) should include at least 200 for add_length.
-  add_length = program.add_length or 100
+  add_length = program.add_length or 500
   config.platform = program.platform or config.platform
 
   # TODO: make this a separate option.
