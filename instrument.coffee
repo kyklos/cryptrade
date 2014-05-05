@@ -36,7 +36,7 @@ class Instrument
     @price = data.close
     @volume = data.volume
     @bars.push data
-    if @ticks.length == 250 # Hold up to 250 values
+    if @ticks.length == 500 # Hold up to 500 values
       @ticks.shift()
     @ticks.push at: data.at, open :data.open, low: data.low, high: data.high, close: data.close, volume: data.volume
 
