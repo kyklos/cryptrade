@@ -88,8 +88,8 @@ class Trader
     # Restore serialize JSON and merge context objects
     if fs.existsSync "#{@name}.json"
       @serialized_context = fs.readFileSync "#{@name}.json", encoding: 'utf8'           
-      # Avoid "wrong" generated JSON files - Should be fixed
-      if @serialized_context is not 'undefined'
+      # Avoid "empty" and "wrong" generated JSON files
+      if @serialized_context isnt {} and @serialized_context isnt 'undefined' 
         _.extend(@context, JSON.parse(@serialized_context))
 
   updateTicker: (platform,cb)->
